@@ -17,7 +17,7 @@ const loginFormHandler = async (event) => {
         console.log(response + " from the loginHandler")
 
         if (response.ok){
-            document.location.replace('/feed');
+            document.location.replace('/login');
         } else {
             alert("Wrong credentials");
         }

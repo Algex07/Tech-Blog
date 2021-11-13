@@ -22,7 +22,7 @@ async function signupFormHandler(event) {
         console.log('success');
 
         // loginHandler();
-        document.location.replace('/feed');
+        document.location.replace('/login');
 
       } else {
         alert(response.statusText);
