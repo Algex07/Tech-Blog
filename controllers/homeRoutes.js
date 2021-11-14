@@ -1,23 +1,22 @@
 const router = require("express").Router();
 const withAuth = require("../utils/auth");
-const { Collect, User, Comment, Post } = require("../models");
+const {  User, Comment, Post } = require("../models");
 const { sequelize } = require("../models/User");
 
 
 router.get('/login', withAuth,  async (req, res) => {  
 
   try {
-    const collectsData = await Collect.findAll({
+    const postData = await Post.findAll({
       include: [
        
- 
        {
           model: User,
           attributes: ['userName', 'id'] ,
           required: true    
          },
          { model: Comment, 
-          attributes: ['content','collectId', 'userId', 'id'],
+          attributes: ['content','postId', 'userId', 'id'],
           required: false,
           include:[
             {model:Post,
@@ -29,14 +28,14 @@ router.get('/login', withAuth,  async (req, res) => {
     });
 
 
-    const collects= collectsData.map(collect=>collect.get({plain:true}))
-console.log(collects)
-console.log(collects[0].comments)
+    const posts= postData.map(post=>post.get({plain:true}))
+console.log(posts)
+console.log(posts[0].comments)
 
     res.render('login', {
-      collects,
-       title: "feed",
-       style: "feed.css",
+      posts,
+       title: "post",
+       style: "post.css",
        exStyle: "https://unicons.iconscout.com/release/v2.1.6/css/unicons.css",
        scripts: [{ script: "index.js" }, { script: 'logout.js' }],
        user_id: req.session.user_id

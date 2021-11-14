@@ -1,0 +1,99 @@
+
+
+<nav>
+    <div class="container">
+     
+        
+
+   
+  
+<main>
+    <div class="container">
+        <!-- LEFT -->
+        <div class="left">
+      
+                <div class="handle">
+                    <h4>{{user_id.name}} </h4>
+                </div>
+            </a>
+
+            <!-- SIDEBAR -->
+            <div class="sidebar">
+                <a class="menu-item active">
+                    <span><i class="uil uil-home"></i></span>
+                    <h3>Feed</h3>
+                </a>
+                <a class="menu-item" id="theme">
+                    <span><i class="uil uil-palette"></i></span>
+                    <h3>Theme</h3>
+                </a>
+                <div id="logout" class="menu-item">
+                    <span><i class="uil uil-sign-out-alt"></i></i></span>
+                    <h3>Sign Out</h3>
+                </div>
+            </div>
+            <!-- END OF SIDEBAR -->
+        </div>
+        <!-- END OF LEFT -->
+        <!-- MIDDLE -->
+        <div class="middle">
+            <!--Posts-->
+            <div class="post">
+                {{#each post as | data |}}
+                <div class="post">
+                    <div class="head">
+                        <div class="user">
+                            
+                            <div>
+                                <h3>{{user.userName}}</h3>
+                                <small>{{data.postName}} on {{format_date data.dateCreated}}</small>
+
+                            </div>
+                        </div>
+                        <span class="edit">
+                            <i class="uil uil-ellipsis-h"></i>
+                        </span>
+                    </div>
+                 
+
+
+                    <div class="action-buttons">
+                        <div class="interaction-buttons">
+                            <span><i class="uil uil-heart"></i></span>
+                            <span><i class="uil uil-comment-dots"></i></span>
+                        </div>
+                    </div>
+                    <div class="caption">
+
+                        <p><b>{{data.postName}} by {{user.userName}} </b> {{data.content}} {{user_id.id}}<span
+                                
+                            {{#each data.comments as |comment|}}
+                           <p>{{comment.content}} by {{comment.user.userName}}</p> 
+                           {{/each}} 
+
+                    </div>
+                    <form class="newPost" id = 'create-comment'>
+                        
+                        <input type="text" placeholder="Type your comment" id="create-comment">
+
+                        <button data-postid="{{data.id}}" class= "commentBtn btn btn-primary">Comment</button> 
+                  
+                    </form>
+                </div>
+                {{/each}}
+            </div>
+        </div>
+        <!-- End of Middle Collumn -->
+
+        <!-- RIGHT  -->
+    
+</main>
+    
+
+
+
+<script src="./js/comments.js"></script>
+
+{{!-- <script src="./assets/script.js" ></script> --}}
+</body>
+</html>
