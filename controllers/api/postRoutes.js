@@ -15,7 +15,7 @@ router.get("/", (req, res) => {
       },
       {
         model: Comment,
-        attributes: ["id", "comment_text", "user_id", "post_id", "created_at"],
+        attributes: ["id", "comment_text", "userId", "post_id", "created_at"],
         include: {
           model: User,
           attributes: ["username"],
@@ -44,7 +44,7 @@ router.get("/:id", (req, res) => {
       },
       {
         model: Comment,
-        attributes: ["id", "comment_text", "user_id", "post_id", "created_at"],
+        attributes: ["id", "comment_text", "userId", "post_id", "created_at"],
         include: {
           model: User,
           attributes: ["username"],
@@ -69,7 +69,7 @@ router.post("/", withAuth, (req, res) => {
   Post.create({
     title: req.body.title,
     content: req.body.content,
-    user_id: req.session.user_id,
+    userId: req.session.userId,
   })
     .then((postData) => res.json(postData))
     .catch((err) => {
