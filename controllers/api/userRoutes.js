@@ -4,17 +4,17 @@ const { User } = require("../../models");
 router.post("/signup", async (req, res) => {
   console.log("HIT /api/users/signup ON BACKEND", req.body.userName, req.body.password)
   try {
-    const newUser = await User.create({
+    const userData = await User.create({
       userName: req.body.userName,
       password: req.body.password,
     });
 
     req.session.save(() => {
-      req.session.userId = newUser.id;
-      req.session.userName = newUser.userName;
+      req.session.userId = userData.id;
+      req.session.userName = userData.userName;
       req.session.loggedIn = true;
       console.log("req.session", req.session.userId, req.session.userName, req.session.loggedIn)
-      res.json(newUser);
+      res.json(userData);
     });
 
   } catch (err) {

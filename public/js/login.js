@@ -1,5 +1,4 @@
-//get the values from the form
-//fetch the api to login the user
+
 
 const loginFormHandler = async (event) => {
     event.preventDefault();

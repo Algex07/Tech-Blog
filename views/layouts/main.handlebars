@@ -8,6 +8,42 @@
     <link rel="stylesheet" href="../../public/css/style.css">
 </head>
 <body>
+   <header class="hero">
+    <h1 class="app-title"><a href="/">The Tech Blog</a></h1>
+  </header>
+<nav class="navbar">
+    <ul>
+      <li class="li-inline nav-item"><a href="/">Home</a></li>
+      <li class="li-inline nav-item"><a href="/dashboard">Dashboard</a></li>
+      {{!-- <li class="li-inline nav-item"><a href="#" id="logout-link">Logout</a></li> --}}
+      {{!-- <li class="li-inline nav-item"><a href="/login">Login</a></li> --}}
+    </ul>
+  </nav>
+  <header class="hero">
+    {{!-- <h1 class="app-title"><a href="/">Dashboard</a></h1> --}}
+  </header>
+
+  <main class="col-auto">
+    {{{body}}}
+  </main>
+    {{#if logged_in}}
+    <script src="/js/logout.js"></script>
+    {{/if}}
+</body>
+</html>
+
+
+
+{{!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Blog</title>
+    <link rel="stylesheet" href="../../public/css/style.css">
+</head>
+<body>
 <nav class="navbar">
     <ul>
       <li class="li-inline nav-item"><a href="/">Home</a></li>
@@ -26,4 +62,4 @@
     <script src="/js/logout.js"></script>
    
 </body>
-</html>
+</html> --}}
